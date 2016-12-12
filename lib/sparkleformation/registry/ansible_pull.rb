@@ -13,7 +13,7 @@ SfnRegistry.register(:ansible_pull) do |_name, _config = {}|
 
   version = Array.new
   if _config.has_key?(:ansible_version)
-    version = [ " =", _config[:ansible_version], "~`lsb_release -s -c`" ]
+    version = [ "=", _config[:ansible_version], "~`lsb_release -s -c`" ]
   end
 
   metadata('AWS::CloudFormation::Init') do
