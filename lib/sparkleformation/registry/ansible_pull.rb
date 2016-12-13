@@ -38,9 +38,12 @@ SfnRegistry.register(:ansible_pull) do |_name, _config = {}|
       commands('02-run-ansible-pull') do
         command join!('env $(cat /etc/ansible-local/seed) ansible-pull -U',
                       _config[:ansible_playbook_repo],
-                      '-d /etc/ansible-local -C',
+                      '-C',
                       _config.fetch(:ansible_playbook_branch, 'master'),
+                      '-i',
+                      _config.fetch(:ansible_inventory, 'hosts'),
                       _config.fetch(:ansible_local_yaml_path, 'local.yml'),
+                      '-c local',
                       {:options => { :delimiter => ' '}})
       end
     end
