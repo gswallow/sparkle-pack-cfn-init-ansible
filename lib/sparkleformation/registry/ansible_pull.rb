@@ -29,7 +29,7 @@ SfnRegistry.register(:ansible_pull) do |_name, _config = {}|
         group 'root'
       end
       commands('00-add-ansible-ppa') do
-        command 'apt-get -q update && apt-get -yqq install software-properties-common && apt-add-repository ppa:ansible/ansible && apt-get -q update'
+        command 'apt-get update && apt-get -yqq install software-properties-common && apt-add-repository ppa:ansible/ansible && apt-get -q update'
         test 'test ! -e ansible-ubuntu-ansible-xenial.list'
       end
       commands('01-install-ansible') do
