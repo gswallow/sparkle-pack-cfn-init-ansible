@@ -20,7 +20,7 @@ SfnRegistry.register(:user_data) do |_name, _config={}|
       "     --stack ", stack_name!,
       "     --exit-code $status\n",
       "  else\n",
-      "    sleep 180\n",
+      "    sleep 420\n",
       "    /usr/local/bin/aws autoscaling set-instance-health --instance-id $(my_instance_id) --health-status Unhealthy --region ", region!, "\n",
       "  fi\n",
       "  exit $status\n",
